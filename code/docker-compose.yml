@@ -1,0 +1,91 @@
+# version: "3.8"
+
+# services: 
+#     web:
+#         image: php:8.0-apache
+#         ports: 
+#             - "80:80"
+#             - "443:443"
+#         volumes: 
+#             - ./app:/var/www/html
+#         networks:
+#             - default
+
+#     db:
+#         image: mysql:5.7
+#         ports: 
+#             - "3306:3306"
+#         command: --default-authentication-plugin=mysql_native_password
+#         environment:
+#             MYSQL_DATABASE: example
+#             MYSQL_USER: admin
+#             MYSQL_PASSWORD: 123456
+#             MYSQL_ROOT_PASSWORD: 123456
+#         volumes:
+#             - ./dump:/docker-entrypoint-initdb.d
+#             - ./conf:/etc/mysql/conf.d
+#             - ./persistent:/var/lib/mysql
+#         networks:
+#             - default
+
+#     phpmyadmin:
+#         image: phpmyadmin/phpmyadmin
+#         links: 
+#             - db:db
+#         ports:
+#             - 8000:80
+#         environment:
+#             MYSQL_USER: admin
+#             MYSQL_PASSWORD: 123456
+#             MYSQL_ROOT_PASSWORD: 123456 
+
+
+version: '3.8'
+services:
+  php-apache-environment:
+    container_name: php-apache
+    build: ./php
+    volumes:
+      - ./php/src:/var/www/html/
+      # - ./php_config.ini /usr/local/etc/php/php_no_errors.ini
+    ports:
+      - 8000:80
+
+  db:
+    container_name: db
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+      MYSQL_DATABASE: blog
+      MYSQL_USER:  MYSQL_USER
+      MYSQL_PASSWORD: MYSQL_PASSWORD
+    ports:
+      - "9906:3306"
+  
+  # db2:
+  #   container_name: db2
+  #   image: mysql:latest
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+  #     MYSQL_DATABASE: articles
+  #     MYSQL_USER:  MYSQL_USER
+  #     MYSQL_PASSWORD: MYSQL_PASSWORD
+  #   ports:
+  #     - "9907:3306"
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    ports:
+      - '8080:80'
+    restart: always
+    environment:
+      # PMA_HOSTS: "db1,db2"
+      # PMA_ARBITRARY: 1
+      PMA_HOST: db
+
+    depends_on:
+      - db
+      # - db1
+      # - db2
