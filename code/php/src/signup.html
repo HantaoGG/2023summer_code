@@ -8,16 +8,30 @@
 </head>
 <body>
     <div class="sign_div">
+       <script src="signup.js"></script>
         <form class="" action="register.php" method="post">
-            <h1>xx的博客</h1>
-            <input class="sign_text" type="text" name="username" placeholder="用户名" >
-            <input class="sign_text" type="password" name="password" placeholder="密码">
-            <input class="sign_text" type="password" name="repassword" placeholder="确认密码">
-            <input class="sign_text" type="text" name="name" placeholder="姓名" >
-            <input class="sign_text" type="text" name="email" placeholder="邮箱" >
+            <h1>CUC的博客</h1>
+            <input class="sign_text" type="text" name="username" placeholder="用户名:长度为2-6位"  minlength="2" maxlength="6" onkeyup="checkPassword()">   
+            <input  class="sign_text" id ='pwd' class="sign_text" type="password" name="password" placeholder="密码:长度为6位以上"minlength="6" >
+            <div class="sign_text"><label  for="">密  码  强  度：</label><span>弱</span><span>中</span><span>强</span> </div>
+            <input id="repassword" class="sign_text" type="password" name="repassword" placeholder="确认密码" onkeyup="checkPassword()">
+            <input class="sign_text" type="text" name="name" placeholder="姓名:长度为2-4位" minlength="2" maxlength="4">
+            <input class="sign_text" type="email"name="email" placeholder="邮箱" >
             <input class="sign_btn" type="submit" value="确认注册">
             <a href="index.html">返回登录</a>
         </form>
     </div>
 </body>
 </html>
+<style type="text/css">
+        .default {background: #eeeeee;}
+        .weak {background: #FF0000;}
+        .medium {background: #FF9900;}
+        .strong {background: #33CC00;}
+        input {height: 20px; line-height: 20px;width: 210px;}
+        span {display: inline-block;width: 50px;height: 30px;line-height: 30px;background: #ddd;text-align: center;margin: 4px 2px;}
+</style>
+
+
+        
+

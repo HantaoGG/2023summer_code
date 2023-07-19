@@ -22,25 +22,29 @@
 
         include "connect.php";
 
-        $sql = "select * from users where user = '$username' and pwd='$password'";
+        $sql = "select * from users where user = '$username'";
 
         $result = $conn->query($sql);
 
         $rows=$result->num_rows;
 
-        if($rows){
+        $row = $result->fetch_assoc();
+        
+        $hashed_password = hash("sha256", $password);
+        
+   
+       
+        if( $hashed_password === trim($row['pwd'])){
 
             $_SESSION['username']=$username;
-
             $_SESSION['password']=$password;
-
             $_SESSION['login']=mt_rand(0,100000);
 
             header("refresh:0;url=personal.php");
 
             exit;
 
-        }else{
+        }else{  
 
         ?>
 
