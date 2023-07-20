@@ -21,17 +21,18 @@
 
     $result=mysqli_fetch_array($result);
 
-    $password=$result[2];
+    $password=$result[1];
 
     //判断密码是否输入正确
+    $hashed_password = hash("sha256", $_REQUEST["oldpassword"]);
 
-    if($password!=$_REQUEST["oldpassword"]){
+    if(trim($password)!==$hashed_password){
 
         ?>
 
         <script> 
 
-            alert("原密码错误!"); 
+            alert("账户信息有误!"); 
 
             window.location.href="update.php"; 
 
@@ -40,88 +41,52 @@
         <?php
 
     }
-
-
-
-    //判断新密码是否输入一致
+    
+    
+     $oldpassword=$_REQUEST["oldpassword"];
 
     $newpassword=$_REQUEST["newpassword"];
 
     $repassword=$_REQUEST["repassword"];
 
-    ?>
 
-    <?php
+
+    $name=$_REQUEST['name'];
+    
+    $sql_2 = "SELECT * FROM users WHERE user='$username' AND name='$name'";
+    
+    $result_2=$conn->query($sql_2);
+ 
+     if (mysqli_num_rows($result_2) == 0) {
+    echo "<script>alert('账户信息有误!'); window.location.href='update.php';</script>";}
+
+    
+   
+  
+
+ 
 
     if($newpassword!=$repassword){
 
-        ?>
+        echo "<script>alert('前后输入的密码不一致!'); window.location.href=\"update.php\";</script>";}
 
-        <script> 
-
-            alert("密码不一致!"); 
-
-            window.location.href="update.php"; 
-
-        </script>
-
-        <?php
-
-    }
-
-    $username=$_REQUEST['username'];
-
-    $name=$_REQUEST['name'];
-
-    $email=$_REQUEST['email'];
-
-    $id=$result[0];
-
-    if($username){
-
-        $username=$username;
-
-        $sql="UPDATE users set user='$username' where id='$id'";
-
-        $conn->query($sql);
-
-    }
-
-    if($newpassword){
-
-        $newpassword=$newpassword;
-
-        $sql="UPDATE users set pwd='$newpassword' where id='$id'";
-
-        $conn->query($sql);
-
-    }
-
-    if($name){
-
-        $sql="UPDATE users set name='$name' where id='$id'";
-
-        $conn->query($sql);
-
-    }
-
-    if($email){
-
-        $sql="UPDATE users set email='$email' where id='$id'";
-
-        $conn->query($sql);
-
-    }
-
-    ?>
-
-    <script> 
-
-        alert("个人资料已更新!"); 
-
-        window.location.href="personal.php"; 
-
-    </script>
-
+   
+  if (trim($newpassword) === trim($oldpassword)) {
+    echo '<script>';
+    echo 'alert("新密码不可与近期使用过的相同！");';
+   
+    echo 'window.location.href = "update.php";';
+    echo '</script>';
+  } else {
+    $hashed_password = hash("sha256", $newpassword);
+    $sql_3 = "UPDATE users SET pwd='$hashed_password' WHERE user='$username'";
+    $result_3 = $conn->query($sql_3);
     
-
+    // 更新密码的操作需要在这里进行
+    if ($result_3) {
+            echo "<script>alert('密码已更新！'); window.location.href='personal.php';</script>";
+        } else {
+            echo "<script>alert('密码更新失败，请重试！'); window.location.href='update.php';</script>";
+        }
+  }
+?>

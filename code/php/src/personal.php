@@ -29,8 +29,6 @@
 
     $result=mysqli_fetch_array($result);
 
-    $name=$result[2];
-
     $email=$result[3];
 
     ?>
@@ -43,11 +41,11 @@
 
         echo '<p class="info_show">'."用户名：".$username.'</p>';
 
-        echo '<p class="info_show">'."姓名：".$name.'</p>';
-
         echo '<p class="info_show">'."Email：".$email.'</p>';
 
         ?>
+        
+    <h2 class="info_h1">功能列表</h2>
 
     <a  href="new_article.html">发布文章</a>
 

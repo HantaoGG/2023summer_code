@@ -13,6 +13,8 @@
     $username=$_REQUEST["username"]; 
 
     $password=$_REQUEST["password"]; 
+    
+    $hashed_password = hash("sha256", $password);
 
     include "connect.php";
     $sql= "select * from users where user='$username'";
@@ -20,7 +22,7 @@
 
     $result=mysqli_fetch_array($result) ;
 
-    $user=$result[1];
+    $user=$result[0];
 
     if(!is_null($user)){ 
 
@@ -42,7 +44,7 @@
 
     $email=$_REQUEST['email'];
 
-    $sql="INSERT INTO users(user,pwd,name,email) VALUES('$username','$password','$name','$email')";
+    $sql="INSERT INTO users(user,pwd,name,email) VALUES('$username','  $hashed_password','$name','$email')";
 
     $conn->query($sql);  
 
