@@ -29,7 +29,7 @@
 
     $result=mysqli_fetch_array($result);
 
-    $email=$result[3];
+    $email=$result[4];
 
     ?>
 

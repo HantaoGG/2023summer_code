@@ -22,7 +22,7 @@
 
     $result=mysqli_fetch_array($result) ;
 
-    $user=$result[0];
+    $user=$result[1];
 
     if(!is_null($user)){ 
 
