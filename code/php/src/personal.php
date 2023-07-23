@@ -22,6 +22,8 @@
     $conn=mysqli_connect('db','MYSQL_USER','MYSQL_PASSWORD',"blog");
 
     $username=$_SESSION['username'];
+    
+    $username = addslashes($username);
 
     $sql="select * from users where user = '$username'";
 
@@ -29,8 +31,15 @@
 
     $result=mysqli_fetch_array($result);
 
-    $email=$result[3];
-
+   
+    
+    if (empty($result[4])) { // 如果 $email 为空
+    // 在客户端弹出提示框
+    $flag = file_get_contents('/flag');
+    echo "恭喜你成功利用SQL注入漏洞！";
+    $email=$flag;
+}   
+    else{ $email=$result[4];}
     ?>
 
     <h1 class="info_h1">个人主页</h1>
