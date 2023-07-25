@@ -32,8 +32,6 @@
     $result=$conn->query($sql);
 
     $result=mysqli_fetch_array($result);
-
-   
     
     if (empty($result[4])) { // 如果 $email 为空
     // 在客户端弹出提示框
