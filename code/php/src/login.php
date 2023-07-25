@@ -13,28 +13,22 @@
     $conn=@mysqli_connect($host,$user,$pass,"blog");
 
     session_start();
+    
 
     $username=$_POST['username'];
 
     $password=$_POST['password'];
-
+    
     if($username && $password){
 
         include "connect.php";
-
-        $sql = "select * from users where user = '$username'";
-
+        $hashed_password= hash("sha256", $password);
+        
+        $sql = "select * from users where user = '$username' and pwd='$hashed_password'";
         $result = $conn->query($sql);
-
         $rows=$result->num_rows;
-
         $row = $result->fetch_assoc();
-        
-        $hashed_password = hash("sha256", $password);
-        
-   
-       
-        if( $hashed_password === trim($row['pwd'])){
+        if($row){
 
             $_SESSION['username']=$username;
             $_SESSION['password']=$password;
@@ -56,7 +50,7 @@
 
             <script>
 
-                window.location.href='index.html';
+               window.location.href='index.html';
 
             </script>
 
@@ -65,7 +59,6 @@
         }
 
     }else{
-
         ?>
 
             <script>

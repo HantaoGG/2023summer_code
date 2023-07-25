@@ -14,7 +14,8 @@
 
     $password=$_REQUEST["password"]; 
     
-    $hashed_password = hash("sha256", $password);
+    $hashed_password= hash("sha256", $password);
+
 
     include "connect.php";
     $sql= "select * from users where user='$username'";
@@ -22,10 +23,10 @@
 
     $result=mysqli_fetch_array($result) ;
 
-    $user=$result[0];
+    $user=$result[1];
 
     if(!is_null($user)){ 
-
+   
   ?> 
 
   <script type="text/javascript"> 
@@ -43,8 +44,8 @@
     $name=$_REQUEST['name'];
 
     $email=$_REQUEST['email'];
-
-    $sql="INSERT INTO users(user,pwd,name,email) VALUES('$username','  $hashed_password','$name','$email')";
+    
+    $sql="INSERT INTO users(user,pwd,name,email) VALUES('$username','$hashed_password','$name','$email')";
 
     $conn->query($sql);  
 
@@ -54,7 +55,7 @@
 
     alert("注册成功!马上登录!"); 
 
-    window.location.href="index.html"; 
+     window.location.href="index.html"; 
 
   </script> 
 

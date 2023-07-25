@@ -65,11 +65,24 @@ function charType(num){
 }
 
 function checkPassword() {
-    var pwd = document.getElementById("pwd").value; // 获取密码输入框的值
-    var repwd = document.getElementById("repassword").value; // 获取确认密码输入框的值
-    if (pwd === repwd) { // 如果两个值相同
-      document.getElementById("repassword").setCustomValidity(""); // 设置确认密码输入框的验证状态为通过
-    } else { // 如果两个值不同
-      document.getElementById("repassword").setCustomValidity("两次输入的密码不相同"); // 设置确认密码输入框的验证状态为不通过，并设置自定义错误消息
-    }
+  var pwd = document.getElementById("pwd").value; // 获取密码输入框的值
+  var repwd = document.getElementById("repassword").value; // 获取确认密码输入框的值
+  if (pwd === repwd) { // 如果两个值相同
+    document.getElementById("repassword").setCustomValidity(""); // 设置确认密码输入框的验证状态为通过
+  } else { // 如果两个值不同
+    document.getElementById("repassword").setCustomValidity("两次输入的密码不相同"); // 设置确认密码输入框的验证状态为不通过，并设置自定义错误消息
   }
+}
+
+function checkForm() {
+  var password = document.getElementById('pwd');
+  var strength = password.nextElementSibling.querySelectorAll('.strong').length;
+  if (strength < 3) {
+    document.getElementById("pwd").setCustomValidity('密码强度较低，请重新输入！');
+    // 阻止表单的提交
+    return false;
+  }
+   document.getElementById("pwd").setCustomValidity('');
+  // 密码强度足够，可以提交表单
+  return true;
+}

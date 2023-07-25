@@ -21,7 +21,7 @@
 
     $result=mysqli_fetch_array($result);
 
-    $password=$result[1];
+    $password=$result[2];
 
     //判断密码是否输入正确
     $hashed_password = hash("sha256", $_REQUEST["oldpassword"]);
@@ -89,4 +89,5 @@
             echo "<script>alert('密码更新失败，请重试！'); window.location.href='update.php';</script>";
         }
   }
-?>
+?>
+
