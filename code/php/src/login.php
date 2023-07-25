@@ -13,11 +13,12 @@
     $conn=@mysqli_connect($host,$user,$pass,"blog");
 
     session_start();
+    
 
     $username=$_POST['username'];
 
     $password=$_POST['password'];
-
+    
     if($username && $password){
 
         include "connect.php";
@@ -27,7 +28,6 @@
         $result = $conn->query($sql);
         $rows=$result->num_rows;
         $row = $result->fetch_assoc();
-        #$hashed_password = hash("sha256", $password);
         if($row){
 
             $_SESSION['username']=$username;
@@ -50,7 +50,8 @@
 
             <script>
 
-               // window.location.href='index.html';
+               window.location.href='index.html';
+
 
             </script>
 
