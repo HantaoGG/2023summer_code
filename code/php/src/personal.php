@@ -61,7 +61,9 @@
     <a  href="new_article.html">发布文章</a>
 
     <a  href="article_list.php">查看文章</a>
-
+        
+    <a  href="form.php">上传文件</a>
+        
     <a  href="update.php">修改资料</a>
 
     <a  href="logout.php">退出登录</a>
