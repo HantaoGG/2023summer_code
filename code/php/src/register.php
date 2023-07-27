@@ -55,8 +55,6 @@
 
     alert("注册成功!马上登录!"); 
      window.location.href="index.html"; 
-
-
   </script> 
 
     

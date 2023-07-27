@@ -16,10 +16,12 @@
     include "connect.php";
 
     $title=$_POST['title'];
+    $title = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['title']);
 
     $author=$_SESSION['username'];
 
     $content=$_POST['content'];
+    $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['content']);
 
     if($title&&$author&&$content){
 
