@@ -75,7 +75,7 @@
 
                             <tr>
 
-                                <td class="list_text"><?php echo $value['id'];?></td>
+                                //<td class="list_text"><?php echo $value['id'];?></td>
 
                                 <td class="list_text"><?php echo $value['title'];?></td>
 
