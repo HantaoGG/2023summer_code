@@ -31,10 +31,10 @@ echo '
                         const int = document.querySelector(".submit");
                         int.style.backgroundColor="red";
                         int.style.fontSize = "25px";
-                        int.value = "失  败"
+                        int.value = "Failed"
                         function move(){
                             int.style.backgroundColor="#00a1d6";
-                            int.value = "上  传"
+                            int.value = "upload"
                             int.style.fontSize = "16px";
                         }
                         setTimeout(move,2000);
