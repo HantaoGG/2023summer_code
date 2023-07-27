@@ -68,22 +68,14 @@ echo '
 </body>
 </html>
 ';   
-    //echo $name;
-    echo $_SERVER["REQUEST_METHOD"];
-    echo 'xxxxxxx'.$_FILES["file"];
-    echo 'aaaaa'.$_POST["file"]."bbb";
+    
     
 
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
     	echo "taozi successs";
         $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
         $temp = explode(".", $_FILES["file"]["name"]);
-        echo $_FILES["file"]["size"];
         $extension = end($temp);     // 获取文件后缀名
-        echo 'cccccc'. $_FILES["file"]["type"];
-        echo $_FILES["file"]["error"];
-        echo "|123";
-        echo $_FILES["file"]["type"];
         if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpg")
@@ -101,6 +93,7 @@ echo '
         || ($_FILES["file"]["type"] == "text/javascript")
         )
         && ($_FILES["file"]["size"] < 20480000)   
+
         && in_array($extension, $allowedExts))
         {
         	if ($_FILES["file"]["error"] > 0){
