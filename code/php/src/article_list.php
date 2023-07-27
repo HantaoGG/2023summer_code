@@ -55,8 +55,6 @@
 
             <tr align="center">
 
-                <td class="list_text">编号</td>
-
                 <td class="list_text">标题</td>
 
                 <td class="list_text">作者</td>
