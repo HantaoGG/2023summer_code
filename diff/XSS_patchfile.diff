@@ -1,0 +1,12 @@
+20c20,22
+< 
+---
+>     $title = str_replace('alert', '', $title);  //替换alert
+>     $title = htmlentities($title) ;
+>  
+24c26,28
+<     $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['content']);
+---
+>     $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i","", @$_POST['content']);
+>     $content = str_replace('alert', '', $content);  //alert
+>     $content = htmlentities($content) ;
