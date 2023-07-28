@@ -69,7 +69,7 @@ echo '
 ';
     // include 'form_judge.php';
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
-        $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
+        $allowedExts = array("gif", "jpeg", "jpg", "png");
         $temp = explode(".", $_FILES["file"]["name"]);
         $extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
