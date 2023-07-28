@@ -1,17 +1,23 @@
 <?php
 
-// error_reporting(0);
+    // error_reporting(0);
 
-$host = 'db';
-$user = 'MYSQL_USER';
-$pass = 'MYSQL_PASSWORD';
+    $host = 'db';
 
-$conn = @mysqli_connect($host, $user, $pass, "blog");
+    // Database use name
+    $user = 'MYSQL_USER';
 
-session_start();
+    //database user password
+    $pass = 'MYSQL_PASSWORD';
 
-$username = $_POST['username'];
-$password = $_POST['password'];
+    $conn=@mysqli_connect($host,$user,$pass,"blog");
+
+    session_start();
+
+    $username=$_POST['username'];
+
+    $password=$_POST['password'];
+
 
 if ($username && $password) {
 
