@@ -69,29 +69,19 @@ echo '
 ';
     // include 'form_judge.php';
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
-        //$allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
-        //$temp = explode(".", $_FILES["file"]["name"]);
-        // echo $_FILES["file"]["size"];
-        //$extension = end($temp);     // 获取文件后缀名
+        $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
+        $temp = explode(".", $_FILES["file"]["name"]);
+        $extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpg")
         || ($_FILES["file"]["type"] == "image/pjpeg")
         || ($_FILES["file"]["type"] == "image/x-png")
         || ($_FILES["file"]["type"] == "image/png")
-        || ($_FILES["file"]["type"] == "application/octet-stream")
-        || ($_FILES["file"]["type"] == "application/x-tar")
-        || ($_FILES["file"]["type"] == "application/x-compressed")
-        || ($_FILES["file"]["type"] == "application/x-zip-compressed")
-        || ($_FILES["file"]["type"] == "text/plain")
-        || ($_FILES["file"]["type"] == "text/xml")
-        || ($_FILES["file"]["type"] == "text/html")
-        || ($_FILES["file"]["type"] == "text/css")
-        || ($_FILES["file"]["type"] == "text/javascript")
         )
         && ($_FILES["file"]["size"] < 20480000)   
-        //&& in_array($extension, $allowedExts))
-        ){
+        && in_array($extension, $allowedExts))
+        }{
         	if ($_FILES["file"]["error"] > 0){
         		echo "错误：: " . $_FILES["file"]["error"] . "<br>";
         	}
