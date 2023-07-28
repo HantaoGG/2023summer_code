@@ -17,7 +17,7 @@
 > ';
 >     // include 'form_judge.php';
 74a72,74
->         $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
+>         $allowedExts = array("gif", "jpeg", "jpg", "png");
 >         $temp = explode(".", $_FILES["file"]["name"]);
 >         $extension = end($temp);     // 获取文件后缀名
 82,83c82,84
