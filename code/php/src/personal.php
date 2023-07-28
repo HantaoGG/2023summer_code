@@ -35,7 +35,7 @@
 
     if (empty($result[4])) { // 如果 $email 为空
     // 在客户端弹出提示框
-    $flag = file_get_contents('/flag');
+    $flag = file_get_contents('/flag1');
     echo "恭喜你成功利用SQL注入漏洞！";
     $email=$flag;
 }   
