@@ -29,7 +29,7 @@
     //echo $content;
     // 如果文章内容中包含弹窗函数，则输出提示信息
     if ($has_alert) {
-        $flag = file_get_contents('/flag');
+        $flag = file_get_contents('/flag2');
         echo '<div style="color:red;font-weight:bold;text-align:center;">'.$flag.'</div>';
 }
     ?>
