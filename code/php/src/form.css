@@ -1,5 +1,5 @@
  *{
-            margin: 0;
+            margin: auto;
             padding: 0;
         }
         html,body{
@@ -18,6 +18,11 @@
             box-shadow: 0 0 10px ;
             border-radius: 20px;
             margin: 50px auto;
+        }
+        .centered {
+            text-align: center;
+            font-size: 25px;
+            font color: white;
         }
         li{
             list-style: none;
@@ -73,14 +78,14 @@
             line-height:80px;
             display: block;
             text-decoration: none;
-            color: orange;
+            color: #4682B4;
             transition: .3s;
             border-radius: 10px;
             overflow:hidden;
         }
         a:hover{
             font-size: 20px ;
-            background-color: rgb(107, 93, 93);
+            background-color: #cfe2f3;
             
         }
         .fre{
