@@ -1,5 +1,4 @@
 <?php
-include "session.php";
 // print_r(traverseDir('./upload'));
 include 'functions.php';
 
@@ -31,10 +30,10 @@ echo '
                         const int = document.querySelector(".submit");
                         int.style.backgroundColor="red";
                         int.style.fontSize = "25px";
-                        int.value = "Failed"
+                        int.value = "失  败"
                         function move(){
                             int.style.backgroundColor="#00a1d6";
-                            int.value = "upload"
+                            int.value = "上  传"
                             int.style.fontSize = "16px";
                         }
                         setTimeout(move,2000);
@@ -64,18 +63,20 @@ echo '
         }
  
         echo '</div>
+        <div class="centered">
+    	<a href="personal.php">返回主页</a>
     </div>
+    </div>';
+    echo'
 </body>
 </html>
-';   
-    
-    
-
+';
+    // include 'form_judge.php';
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
-    	echo "taozi successs";
-        $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
-        $temp = explode(".", $_FILES["file"]["name"]);
-        $extension = end($temp);     // 获取文件后缀名
+        //$allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
+        //$temp = explode(".", $_FILES["file"]["name"]);
+        // echo $_FILES["file"]["size"];
+        //$extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpg")
@@ -93,9 +94,8 @@ echo '
         || ($_FILES["file"]["type"] == "text/javascript")
         )
         && ($_FILES["file"]["size"] < 20480000)   
-
-        && in_array($extension, $allowedExts))
-        {
+        //&& in_array($extension, $allowedExts))
+        ){
         	if ($_FILES["file"]["error"] > 0){
         		echo "错误：: " . $_FILES["file"]["error"] . "<br>";
         	}
@@ -105,7 +105,7 @@ echo '
                     const int = document.querySelector(".submit");
                     int.style.backgroundColor="gold";
                     int.style.fontSize = "25px";
-                    int.value = "Successed!"
+                    int.value = "Success"
                     function move(){
                         location = "form.php";
                     }
@@ -121,7 +121,7 @@ echo '
                     const int = document.querySelector(".submit");
                     int.style.backgroundColor="red";
                     int.style.fontSize = "25px";
-                    int.value = "Failed!"
+                    int.value = "Fail"
                     function move(){
                         location = "form.php";
                     }
@@ -130,6 +130,7 @@ echo '
             ';
         }
     }
+
  
  
 ?>
