@@ -1,4 +1,5 @@
 <?php
+include "session.php";
 // print_r(traverseDir('./upload'));
 include 'functions.php';
 
@@ -30,10 +31,10 @@ echo '
                         const int = document.querySelector(".submit");
                         int.style.backgroundColor="red";
                         int.style.fontSize = "25px";
-                        int.value = "失  败"
+                        int.value = "Failed"
                         function move(){
                             int.style.backgroundColor="#00a1d6";
-                            int.value = "上  传"
+                            int.value = "upload"
                             int.style.fontSize = "16px";
                         }
                         setTimeout(move,2000);
@@ -63,20 +64,14 @@ echo '
         }
  
         echo '</div>
-        <div class="centered">
-    	<a href="personal.php">返回主页</a>
     </div>
-    </div>';
-    echo'
 </body>
 </html>
-';
-    // include 'form_judge.php';
+';   
+    
+    
+
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
-//分离后缀名进行判断
-        $allowedExts = array("gif", "jpeg", "jpg", "png","zip","rar","tar",'tgz',"txt","xml","html","css","js");
-        $temp = explode(".", $_FILES["file"]["name"]);
-        $extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpg")
@@ -84,11 +79,7 @@ echo '
         || ($_FILES["file"]["type"] == "image/x-png")
         || ($_FILES["file"]["type"] == "image/png")
         )
-        && ($_FILES["file"]["size"] < 20480000)   
-
-//判断后缀名是否在上述数组中
-        && in_array($extension, $allowedExts))
-
+        && ($_FILES["file"]["size"] < 20480000)   )
         {
         	if ($_FILES["file"]["error"] > 0){
         		echo "错误：: " . $_FILES["file"]["error"] . "<br>";
@@ -99,7 +90,7 @@ echo '
                     const int = document.querySelector(".submit");
                     int.style.backgroundColor="gold";
                     int.style.fontSize = "25px";
-                    int.value = "Success"
+                    int.value = "Successed!"
                     function move(){
                         location = "form.php";
                     }
@@ -115,7 +106,7 @@ echo '
                     const int = document.querySelector(".submit");
                     int.style.backgroundColor="red";
                     int.style.fontSize = "25px";
-                    int.value = "Fail"
+                    int.value = "Failed!"
                     function move(){
                         location = "form.php";
                     }
@@ -124,7 +115,6 @@ echo '
             ';
         }
     }
-
  
  
 ?>
