@@ -5,6 +5,7 @@ services:
     build: ./
     volumes:
       - ./php/src:/var/www/html/
+      - ./php/src/upload:/var/www/html/upload
     ports:
       - 80:80
     depends_on:
