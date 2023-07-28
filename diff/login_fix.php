@@ -52,7 +52,7 @@ if ($username && $password) {
             alert("用户名或密码错误!");
         </script>
         <script>
-            // window.location.href='index.html';
+            window.location.href='index.html';
         </script>
 
         <?php
