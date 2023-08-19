@@ -62,7 +62,7 @@
 
     <a  href="article_list.php">查看文章</a>
         
-    <a  href="form.php">美图分享</a>
+    <a  href="form.php">随手分享</a>
         
     <a  href="update.php">修改资料</a>
 

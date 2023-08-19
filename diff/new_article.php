@@ -22,15 +22,15 @@
 
     $content=$_POST['content'];
     $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['content']);
-
-    if($title&&$author&&$content){
-
-        $sql="INSERT INTO articles(title,author,content) VALUES('$title','$author','$content')";
-
-        $conn->query($sql);
-
-        ?>
-
+    if ($title && $author && $content) {
+        $sql = "INSERT INTO articles(title, author, content) VALUES(?, ?, ?)";
+    
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param("sss", $title, $author, $content);
+        $stmt->execute();
+        $stmt->close();
+        
+    ?>
         <script>
 
             alert("文章发布成功!");
