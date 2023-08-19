@@ -1,5 +1,4 @@
 <?php
-// print_r(traverseDir('./upload'));
 include 'functions.php';
 
 $prin = traverseDir('./upload');
@@ -77,9 +76,6 @@ echo '
 ';
     // include 'form_judge.php';
     if($_SERVER["REQUEST_METHOD"] == "POST" && empty($_POST["file"]) !== false){
-        //$allowedExts = array("gif", "jpeg", "jpg", "png","txt");
-        //$temp = explode(".", $_FILES["file"]["name"]);
-        //$extension = end($temp);     // 获取文件后缀名
         if ((($_FILES["file"]["type"] == "image/gif")
         || ($_FILES["file"]["type"] == "image/jpeg")
         || ($_FILES["file"]["type"] == "image/jpg")
@@ -89,7 +85,6 @@ echo '
         || ($_FILES["file"]["type"] == "text/plain")
         )
         && ($_FILES["file"]["size"] < 20480000)   
-        //&& in_array($extension, $allowedExts))
         ){
         	if ($_FILES["file"]["error"] > 0){
         		echo "错误：: " . $_FILES["file"]["error"] . "<br>";

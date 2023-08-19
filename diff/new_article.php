@@ -16,20 +16,19 @@
     include "connect.php";
 
     $title=$_POST['title'];
-    $title = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['title']);
+    $title = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i","", @$_POST['title']);
 
     $author=$_SESSION['username'];
 
     $content=$_POST['content'];
-    $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['content']);
+    $content = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i","", @$_POST['content']);
     if ($title && $author && $content) {
         $sql = "INSERT INTO articles(title, author, content) VALUES(?, ?, ?)";
-    
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $title, $author, $content);
         $stmt->execute();
         $stmt->close();
-        
+    
     ?>
         <script>
 

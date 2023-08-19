@@ -1,37 +1,9 @@
-2d1
-< include "session.php";
-34c33
-<                         int.value = "Failed"
----
->                         int.value = "失  败"
-37c36
-<                             int.value = "upload"
----
->                             int.value = "上  传"
-70,73c69,70
-< ';   
-<     
-<     
-< 
----
-> ';
->     // include 'form_judge.php';
-74a72,74
->         $allowedExts = array("gif", "jpeg", "jpg", "png");
+78a79,81
+>         $allowedExts = array("gif", "jpeg", "jpg", "png","txt");
 >         $temp = explode(".", $_FILES["file"]["name"]);
 >         $extension = end($temp);     // 获取文件后缀名
-82,83c82,84
-<         && ($_FILES["file"]["size"] < 20480000)   )
-<         {
+88c91,92
+<         ){
 ---
->         && ($_FILES["file"]["size"] < 20480000)   
 >         && in_array($extension, $allowedExts))
->         }{
-93c94
-<                     int.value = "Successed!"
----
->                     int.value = "Success"
-109c110
-<                     int.value = "Failed!"
----
->                     int.value = "Failed"
+>         {

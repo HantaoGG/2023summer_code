@@ -1,5 +1,4 @@
 <?php
-// print_r(traverseDir('./upload'));
 include 'functions.php';
 
 $prin = traverseDir('./upload');

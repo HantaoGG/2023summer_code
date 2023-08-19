@@ -16,7 +16,7 @@
     include "connect.php";
 
     $title=$_POST['title'];
-    $title = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i", "", @$_POST['title']);
+    $title = preg_replace( "/<(.*)s(.*)c(.*)r(.*)i(.*)p(.*)t>/i","", @$_POST['title']);
     $title = str_replace('alert', '', $title);  //替换alert
     $title = htmlentities($title) ;
  
@@ -28,13 +28,12 @@
     $content = htmlentities($content) ;
     if ($title && $author && $content) {
         $sql = "INSERT INTO articles(title, author, content) VALUES(?, ?, ?)";
-    
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sss", $title, $author, $content);
         $stmt->execute();
         $stmt->close();
     
-        ?>
+    ?>
         <script>
 
             alert("文章发布成功!");
