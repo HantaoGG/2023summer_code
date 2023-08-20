@@ -18,4 +18,7 @@
 - 确保已安装`docker`环境，执行`docker-v`指令进行确认。
 - 将项目源码`clone`至本地，进入文件，切换到`docker-compose.yml`所在目录，在命令行中执行`docker-compose up --build -d`指令，即可成功搭建环境。
 - 指令执行完成后，主机访问`虚拟机IP:80`即可访问漏洞网站。
-
+- 在`apache`对应的`docker`容器中输入如下指令，即可更新相应的`flag`内容
+    ```
+    echo 'flag{new_flag_value}' > /flag1
+    ```

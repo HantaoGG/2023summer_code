@@ -114,7 +114,7 @@ echo '
                     int.style.fontSize = "25px";
                     int.value = "Success"
                     function move(){
-                        //location = "form.php";
+                        location = "form.php";
                     }
                    setTimeout(move,2000);
                 </script>
